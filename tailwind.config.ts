@@ -2,12 +2,15 @@ import type { Config } from "tailwindcss";
 
 const config: Config = {
   content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/**/*.{html,js,jsx,ts,tsx,mdx}", // Match all relevant files in src directory
+    "./public/**/*.html", // Match HTML files in public directory
+    "./components/**/*.{html,js,jsx,ts,tsx,mdx}", // If you have a components folder
   ],
   theme: {
     extend: {
+      container: {
+        center: true,
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
