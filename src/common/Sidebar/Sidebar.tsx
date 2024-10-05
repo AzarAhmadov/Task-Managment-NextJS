@@ -5,29 +5,38 @@ import { GrCompliance } from "react-icons/gr";
 import { LuTimerOff } from "react-icons/lu";
 
 const Sidebar = () => {
+  const sidebarLinks = [
+    {
+      icon: <IoGridOutline />,
+      title: "All",
+    },
+    {
+      icon: <GrCompliance />,
+      title: "Completed",
+    },
+    {
+      icon: <IoTimeOutline />,
+      title: "Pending",
+    },
+    {
+      icon: <LuTimerOff />,
+      title: "Overdue",
+    },
+  ];
+
   return (
     <aside className="container mx-auto">
       <ul className="space-y-10 top-[125px] fixed h-screen">
-        <li>
-          <Link href={"/"} className="text-[25px]">
-            <IoGridOutline />
-          </Link>
-        </li>
-        <li>
-          <Link href={"/"} className="text-[25px]">
-            <GrCompliance />
-          </Link>
-        </li>
-        <li>
-          <Link href={"/"} className="text-[25px]">
-            <IoTimeOutline />
-          </Link>
-        </li>
-        <li>
-          <Link href={"/"} className="text-[25px]">
-            <LuTimerOff />
-          </Link>
-        </li>
+        {sidebarLinks.map((item, index) => (
+          <li className="flex group items-center gap-x-3 w-[25px]" key={index}>
+            <Link href={"/"} className="text-[25px] hover:scale-105 transition-all">
+              {item.icon}
+            </Link>
+            <p className="bg-black invisible opacity-0 group-hover:visible -ml-1 group-hover:-ml-0   group-hover:opacity-100 transition-all duration-300 text-white rounded-full py-1 px-3 text-[14px]">
+              {item.title}
+            </p>
+          </li>
+        ))}
       </ul>
     </aside>
   );
