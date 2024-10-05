@@ -1,6 +1,6 @@
 import { TypeFormTop } from "@/types/types";
 import Link from "next/link";
-import React from "react";
+import React, { memo } from "react";
 
 const FormTop: React.FC<TypeFormTop> = ({
   title,
@@ -21,4 +21,4 @@ const FormTop: React.FC<TypeFormTop> = ({
   );
 };
 
-export default FormTop;
+export default memo(FormTop);
