@@ -10,3 +10,9 @@ export type TypeFormTop = {
   href: string;
   linkText: string;
 };
+
+export type TypeTasks = {
+  title: string;
+  desc: string;
+  level: string;
+};
