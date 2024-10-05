@@ -7,7 +7,7 @@ import React from "react";
 const Home = () => {
   return (
     <Container>
-      <div className=" grid grid-cols-12 gap-x-7">
+      <div className="grid grid-cols-12 gap-x-7">
         <div className="col-span-9 shadow-sm rounded-[25px] bg-[#f9f9f997] overflow-auto px-5 pb-5 h-[calc(100vh_-_135px)]">
           <div className=" sticky py-5 top-0 bg-[#f9f9f9] z-20">
             <TaskTop />
