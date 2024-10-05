@@ -6,8 +6,8 @@ import { LuTimerOff } from "react-icons/lu";
 
 const Sidebar = () => {
   return (
-    <aside className="container mx-auto mt-7">
-      <ul className="space-y-10 top-[125px] bg-white fixed h-screen">
+    <aside className="container mx-auto">
+      <ul className="space-y-10 top-[125px] fixed h-screen">
         <li>
           <Link href={"/"} className="text-[25px]">
             <IoGridOutline />

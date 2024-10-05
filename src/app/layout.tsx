@@ -15,6 +15,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <title>TaskAza</title>
+      </head>
       <body className={poppins.className}>
         <Header />
         <Sidebar />
