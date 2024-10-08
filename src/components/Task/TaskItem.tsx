@@ -21,11 +21,11 @@ const TaskItem: React.FC<Itask> = ({ item }) => {
   const levelOfBg = levelColors[level];
 
   return (
-    <div className="bg-white p-5 rounded-lg border">
-      <>
+    <div className="bg-white p-5 rounded-lg border flex flex-col justify-between">
+      <div>
         <h3 className="mb-3 text-lg font-[600]">{title}</h3>
         <p className="text-[#000000ab] text-sm">{desc}</p>
-      </>
+      </div>
 
       <div className="mt-12 flex justify-between items-center">
         <span className="text-[#000000ab] text-[12px]">4 days ago</span>
