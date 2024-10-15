@@ -1,24 +1,33 @@
 "use client";
 
+import { useAppContext } from "@/context/AppContext";
 import React, { useState } from "react";
+import { date } from "zod";
 
 const TaskTop = () => {
   const tasksBtn = [
     {
-      title: "All",
+      title: "all",
     },
     {
-      title: "Low",
+      title: "low",
     },
     {
-      title: "Medium",
+      title: "medium",
     },
     {
-      title: "High",
+      title: "high",
     },
   ];
 
-  const [tab, setTab] = useState("All");
+  const [tab, setTab] = useState("all");
+
+  const { filterTaskLevel } = useAppContext();
+
+  const handleButton = (data: any) => {
+    setTab(data.title);
+    filterTaskLevel(data.title);
+  };
 
   return (
     <div className="flex justify-between items-center">
@@ -27,7 +36,7 @@ const TaskTop = () => {
       <div className="flex gap-x-1 bg-gradient-to-r from-gray-800 to-stone-800 p-2 text-white rounded-full text-sm">
         {tasksBtn.map((item, index) => (
           <button
-            onClick={() => setTab(item.title)}
+            onClick={() => handleButton(item)}
             key={index}
             className={`${
               tab === item.title ? "bg-white text-black " : null

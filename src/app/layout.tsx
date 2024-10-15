@@ -2,6 +2,7 @@ import Header from "@/common/Header/Header";
 import "./css/globals.css";
 import { Poppins } from "next/font/google";
 import Sidebar from "@/common/Sidebar/Sidebar";
+import AppContextProvider from "@/context/AppContext";
 
 const poppins = Poppins({
   weight: ["300", "400", "500", "600", "700"],
@@ -19,11 +20,13 @@ export default function RootLayout({
         <title>TaskAza</title>
       </head>
       <body className={poppins.className}>
-        <Header />
-        <div className="px-5">
-          <Sidebar />
-          {children}
-        </div>
+        <AppContextProvider>
+          <Header />
+          <div className="px-5">
+            <Sidebar />
+            {children}
+          </div>
+        </AppContextProvider>
       </body>
     </html>
   );
