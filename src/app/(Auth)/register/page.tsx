@@ -21,6 +21,7 @@ import FormTop from "@/components/Form/FormTop";
 
 const Register = () => {
   const [isShow, toggleShow] = useToggle();
+  const [isShowPassword, togglePasswordShow] = useToggle();
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
@@ -28,6 +29,7 @@ const Register = () => {
       name: "",
       email: "",
       password: "",
+      confirm_password: "",
     },
   });
 
@@ -40,10 +42,10 @@ const Register = () => {
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className="bg-gradient-to-r rounded-[20px] flex flex-col items-center justify-center from-slate-100 to-slate-200 p-5 h-[calc(100vh_-_135px)]"
+          className="bg-gradient-to-r rounded-[20px] flex flex-col items-center justify-center from-slate-100 to-slate-200 h-[calc(100vh_-_135px)] p-5"
         >
           <div
-            className="max-w-[450px] space-y-5 rounded-lg w-full py-10 px-8 bg-white shadow-md"
+            className="max-w-[450px] space-y-5 overflow-y-auto rounded-lg w-full py-10 max-h-full px-8 bg-white shadow-md"
             space-y-6
           >
             <FormTop
@@ -78,6 +80,7 @@ const Register = () => {
                 </FormItem>
               )}
             />
+
             <FormField
               control={form.control}
               name="password"
@@ -91,13 +94,44 @@ const Register = () => {
                         placeholder="Password"
                         {...field}
                       />
-                      <button
-                        onClick={toggleShow}
-                        type="button"
-                        className="absolute top-[36px] right-4 z-20"
-                      >
-                        {isShow ? <FaRegEyeSlash /> : <FaRegEye />}
-                      </button>
+                      {form.watch("password").length > 0 && (
+                        <button
+                          onClick={toggleShow}
+                          type="button"
+                          className="absolute top-[36px] right-4 z-20"
+                        >
+                          {isShow ? <FaRegEyeSlash /> : <FaRegEye />}
+                        </button>
+                      )}
+                    </>
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name="confirm_password"
+              render={({ field }) => (
+                <FormItem className="relative">
+                  <FormLabel>Confirm Password</FormLabel>
+                  <FormControl>
+                    <>
+                      <Input
+                        type={isShowPassword ? "text" : "password"}
+                        placeholder="Confirm Password"
+                        {...field}
+                      />
+                      {form.watch("confirm_password").length > 0 && (
+                        <button
+                          onClick={togglePasswordShow}
+                          type="button"
+                          className="absolute top-[36px] right-4 z-20"
+                        >
+                          {isShowPassword ? <FaRegEyeSlash /> : <FaRegEye />}
+                        </button>
+                      )}
                     </>
                   </FormControl>
                   <FormMessage />
