@@ -1,17 +1,29 @@
 import { z } from "zod";
 
-export const FormSchema = z.object({
-  email: z.string().trim().min(1, { message: "Email is required" }).email({
-    message: "Email not valid",
-  }),
-  password: z
-    .string()
-    .trim()
-    .min(1, { message: "Password is required" })
-    .min(5, {
-      message: "Password must be at least 5 characters long",
+export const FormSchema = z
+  .object({
+    email: z.string().trim().min(1, { message: "Email is required" }).email({
+      message: "Email not valid",
     }),
-  name: z.string().trim().min(1, { message: "Name is required" }).min(3, {
-    message: "Name must be at least 3 characters long",
-  }),
-});
+    password: z
+      .string()
+      .trim()
+      .min(1, { message: "Password is required" })
+      .min(5, {
+        message: "Password must be at least 5 characters long",
+      }),
+    confirm_password: z
+      .string()
+      .trim()
+      .min(1, { message: "Confirm password is required" })
+      .min(5, {
+        message: "Password must be at least 5 characters long",
+      }),
+    name: z.string().trim().min(1, { message: "Name is required" }).min(3, {
+      message: "Name must be at least 3 characters long",
+    }),
+  })
+  .refine((data) => data.password === data.confirm_password, {
+    message: "Passwords must match",
+    path: ["confirm_password"],
+  });
