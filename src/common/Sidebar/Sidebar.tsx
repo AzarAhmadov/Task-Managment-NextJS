@@ -30,7 +30,7 @@ const Sidebar = () => {
         {sidebarLinks.map((item, index) => (
           <li className="flex group items-center gap-x-3 w-[25px]" key={index}>
             <Link
-              href={"/"}
+              href={`/${item.title.toLowerCase()}`}
               className="text-[25px] hover:scale-105 transition-all"
             >
               {item.icon}
