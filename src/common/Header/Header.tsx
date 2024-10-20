@@ -6,6 +6,7 @@ import { FaRegUserCircle, FaRegMoon } from "react-icons/fa";
 import { Button } from "@/components/ui/button";
 import { usePathname } from "next/navigation";
 import Logo from "../Logo/Logo";
+import { TiPlusOutline } from "react-icons/ti";
 
 const Header = () => {
   const params = usePathname();
@@ -25,6 +26,11 @@ const Header = () => {
         </div>
         <div className="flex items-center gap-x-3">
           <ul className="flex items-center gap-x-4">
+            <li>
+              <Button variant="outline" className="text-md">
+                <TiPlusOutline className="text-[22px] me-1" /> Create New Task
+              </Button>
+            </li>
             <li className="flex gap-x-2">
               <Button asChild variant={url === "login" ? "default" : "outline"}>
                 <Link href="/login"> Login </Link>
