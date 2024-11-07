@@ -8,6 +8,7 @@ type Task = {
   title: string;
   desc: string;
   level: string;
+  status: string;
 };
 
 type AppContextType = {
@@ -19,6 +20,7 @@ const AppContext = createContext<AppContextType | undefined>(undefined);
 
 const AppContextProvider: React.FC<TypeContainer> = ({ children }) => {
   const [taskFilter, setTaskFilter] = useState<Task[]>(tasksData);
+  const [taskFilterStatus, setTaskFilterStatus] = useState<Task[]>(tasksData);
 
   const filterTaskLevel = (level: string) => {
     if (level === "all") {
